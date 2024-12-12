@@ -5,7 +5,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
   lang: 'zh-CN',
-
+  base: '/note-blogs/',
   title: 'note blogs ！',
   description: '个人学习笔记 Blogs',
 
