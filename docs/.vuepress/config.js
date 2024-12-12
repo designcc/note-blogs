@@ -5,8 +5,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
   lang: 'zh-CN',
-  base: '/note-blogs/',
-  title: 'note blogs ！',
+  title: 'note blogs',
   description: '个人学习笔记 Blogs',
 
   theme: defaultTheme({
@@ -15,20 +14,16 @@ export default defineUserConfig({
     navbar: [
       '/',
       {
-        text: 'Article',
+        text: '前端笔记',
         link: '/article/',
       },
       {
-        text: 'Category',
+        text: '后端笔记',
         link: '/category/',
       },
       {
-        text: 'Tag',
+        text: '系统笔记',
         link: '/tag/',
-      },
-      {
-        text: 'Timeline',
-        link: '/timeline/',
       },
     ],
   }),
