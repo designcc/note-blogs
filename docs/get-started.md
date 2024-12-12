@@ -1,46 +1,25 @@
-# Get Started
+# note blogs
 
-This is a normal page, which contains VuePress basics.
+温故而知新，可以为师矣
 
-## Pages
+## 前端笔记
 
-You can add markdown files in your vuepress directory, every markdown file will be converted to a page in your site.
+Javascript, CSS, HTML, Node.js, Vue, React, Webpack, ES6, AST
 
-See [routing][] for more details.
+See [frontendUrl][] for more details.
 
-## Content
+## 后端笔记
 
-Every markdown file [will be rendered to HTML, then converted to a Vue SFC][content].
+Java, springboot, Mybatis, Spring, SpringMVC, SpringBoot, MySQL
 
-VuePress support basic markdown syntax and [some extensions][synatex-extensions], you can also [use Vue features][vue-feature] in it.
+See [backendUrl][] for more details.
 
-## Configuration
+## 系统笔记
 
-VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.
+operating system, terminal, browser, git, vim
 
-For [client side configuration][client-config], you can create `.vuepress/client.js`(or .ts).
+See [systemUrl][] for more details.
 
-Meanwhile, you can also add configuration per page with [frontmatter][].
-
-## Layouts and customization
-
-Here are common configuration controlling layout of `@vuepress/theme-default`:
-
-- [navbar][]
-- [sidebar][]
-
-Check [default theme docs][default-theme] for full reference.
-
-You can [add extra style][style] with `.vuepress/styles/index.scss` file.
-
-[routing]: https://vuejs.press/guide/page.html#routing
-[content]: https://vuejs.press/guide/page.html#content
-[synatex-extensions]: https://vuejs.press/guide/markdown.html#syntax-extensions
-[vue-feature]: https://vuejs.press/guide/markdown.html#using-vue-in-markdown
-[config]: https://vuejs.press/guide/configuration.html#client-config-file
-[client-config]: https://vuejs.press/guide/configuration.html#client-config-file
-[frontmatter]: https://vuejs.press/guide/page.html#frontmatter
-[navbar]: https://vuejs.press/reference/default-theme/config.html#navbar
-[sidebar]: https://vuejs.press/reference/default-theme/config.html#sidebar
-[default-theme]: https://vuejs.press/reference/default-theme/
-[style]: https://vuejs.press/reference/default-theme/styles.html#style-file
+[frontendUrl]: /README.md
+[backendUrl]: /README.md
+[systemUrl]: /README.md

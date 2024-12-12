@@ -9,7 +9,7 @@ actions:
 
 features:
   - title: 前端笔记
-    details: Javascript, CSS, HTML, Node.js, Vue, Vuex, Vue-router, Webpack, ES6
+    details: Javascript, CSS, HTML, Node.js, Vue, React, Webpack, ES6, AST
   - title: 后端笔记
     details: Java, springboot, Mybatis, Spring, SpringMVC, SpringBoot, MySQL
   - title: 系统笔记

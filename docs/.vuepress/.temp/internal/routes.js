@@ -1,7 +1,7 @@
 export const redirects = JSON.parse("{}")
 
 export const routes = Object.fromEntries([
-  ["/get-started.html", { loader: () => import(/* webpackChunkName: "get-started.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/get-started.html.js"), meta: {"title":"Get Started"} }],
+  ["/get-started.html", { loader: () => import(/* webpackChunkName: "get-started.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/get-started.html.js"), meta: {"title":"note blogs"} }],
   ["/", { loader: () => import(/* webpackChunkName: "index.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/index.html.js"), meta: {"title":"Home"} }],
   ["/posts/archive1.html", { loader: () => import(/* webpackChunkName: "posts_archive1.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/posts/archive1.html.js"), meta: {"_blog":{"title":"Archive Article1","author":"","date":"1998-01-01T00:00:00.000Z","category":["History"],"tag":["WWI"],"excerpt":"\n<h2>Heading 2</h2>\n<p>Here is the content.</p>\n<h3>Heading 3</h3>\n<p>Here is the content.</p>\n"},"title":"Archive Article1"} }],
   ["/posts/archive2.html", { loader: () => import(/* webpackChunkName: "posts_archive2.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/posts/archive2.html.js"), meta: {"_blog":{"title":"Archive Article2","author":"","date":"1998-01-02T00:00:00.000Z","category":["History"],"tag":["WWII"],"excerpt":"\n<h2>Heading 2</h2>\n<p>Here is the content.</p>\n<h3>Heading 3</h3>\n<p>Here is the content.</p>\n"},"title":"Archive Article2"} }],
