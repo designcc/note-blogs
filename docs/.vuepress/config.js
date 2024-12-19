@@ -7,7 +7,7 @@ export default defineUserConfig({
   lang: 'zh-CN',
   title: 'note blogs',
   description: '个人学习笔记 Blogs',
-
+  base: '/note-blogs/',
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
 
