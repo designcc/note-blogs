@@ -15,7 +15,7 @@ export default defineUserConfig({
       '/',
       {
         text: '前端笔记',
-        link: '/article/',
+        link: '/views/frontend.md',
       },
       {
         text: '后端笔记',

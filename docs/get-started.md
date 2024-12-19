@@ -1,6 +1,6 @@
 # note blogs
 
-温故而知新，可以为师矣
+**温故而知新**
 
 ## 前端笔记
 
@@ -20,6 +20,6 @@ operating system, terminal, browser, git, vim
 
 See [systemUrl][] for more details.
 
-[frontendUrl]: /README.md
+[frontendUrl]: /views/frontend.md
 [backendUrl]: /README.md
 [systemUrl]: /README.md
