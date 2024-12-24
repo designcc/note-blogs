@@ -306,6 +306,36 @@
 <span class="line"><span class="token comment">// 首先通过递归创建一个可以生成任意长度的数组类型</span></span>
 <span class="line"><span class="token comment">// 然后创建一个加法类型，通过数组的长度来实现加法运算</span></span>
 <span class="line"></span></code></pre>
-</div></div></template>
+</div><h2 id="vuejs" tabindex="-1"><a class="header-anchor" href="#vuejs"><span>VueJs</span></a></h2>
+<p>声明式的、组件化的编程模型</p>
+<h3 id="vue2-x生命周期" tabindex="-1"><a class="header-anchor" href="#vue2-x生命周期"><span>Vue2.x生命周期</span></a></h3>
+<ul>
+<li>beforeCreate: 实例初始化之后，数据观测和事件配置之前</li>
+<li>created: 实例已经创建完成，数据观测和事件配置完成，但是$el属性目前不可见</li>
+<li>beforeMount: 挂载开始之前被调用，相关的render函数首次被调用</li>
+<li>mounted: 实例已经挂载完成，数据渲染到页面</li>
+<li>beforeUpdate: 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前</li>
+<li>updated: 数据更改导致虚拟DOM重新渲染和打补丁之后调用</li>
+<li>activated: 被keep-alive缓存的组件激活时调用</li>
+<li>deactivated: 被keep-alive缓存的组件停用时调用</li>
+<li>beforeDestroy: 实例销毁之前调用，实例仍然可用</li>
+<li>destroyed: 实例销毁之后调用，所有绑定都会被解绑</li>
+</ul>
+<h3 id="vue3-x生命周期" tabindex="-1"><a class="header-anchor" href="#vue3-x生命周期"><span>Vue3.x生命周期</span></a></h3>
+<ul>
+<li>beforeCreate: 实例初始化之后，数据观测和事件配置之前</li>
+<li>created: 实例已经创建完成，数据观测和事件配置完成，但是$el属性目前不可见</li>
+<li>beforeMount: 挂载开始之前被调用，相关的render函数首次被调用</li>
+<li>mounted: 实例已经挂载完成，数据渲染到页面</li>
+<li>beforeUpdate: 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前</li>
+<li>updated: 数据更改导致虚拟DOM重新渲染和打补丁之后调用</li>
+<li>beforeUnmount: 卸载之前调用</li>
+<li>unmounted: 卸载之后调用</li>
+</ul>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>setup函数会在beforeCreate之前执行，setup函数相当于beforeCreate和created的功能，可以在setup中直接进行数据初始化和方法定义</p>
+</div>
+</div></template>
 
 

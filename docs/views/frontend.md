@@ -302,3 +302,31 @@ type AddResult = Add<32,23>
 // 首先通过递归创建一个可以生成任意长度的数组类型
 // 然后创建一个加法类型，通过数组的长度来实现加法运算
 ```
+
+## VueJs
+声明式的、组件化的编程模型
+### Vue2.x生命周期
+- beforeCreate: 实例初始化之后，数据观测和事件配置之前
+- created: 实例已经创建完成，数据观测和事件配置完成，但是$el属性目前不可见
+- beforeMount: 挂载开始之前被调用，相关的render函数首次被调用
+- mounted: 实例已经挂载完成，数据渲染到页面
+- beforeUpdate: 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前
+- updated: 数据更改导致虚拟DOM重新渲染和打补丁之后调用
+- activated: 被keep-alive缓存的组件激活时调用
+- deactivated: 被keep-alive缓存的组件停用时调用
+- beforeDestroy: 实例销毁之前调用，实例仍然可用
+- destroyed: 实例销毁之后调用，所有绑定都会被解绑
+
+### Vue3.x生命周期
+- beforeCreate: 实例初始化之后，数据观测和事件配置之前
+- created: 实例已经创建完成，数据观测和事件配置完成，但是$el属性目前不可见
+- beforeMount: 挂载开始之前被调用，相关的render函数首次被调用
+- mounted: 实例已经挂载完成，数据渲染到页面
+- beforeUpdate: 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前
+- updated: 数据更改导致虚拟DOM重新渲染和打补丁之后调用
+- beforeUnmount: 卸载之前调用
+- unmounted: 卸载之后调用
+
+::: tip
+setup函数会在beforeCreate之前执行，setup函数相当于beforeCreate和created的功能，可以在setup中直接进行数据初始化和方法定义
+:::

@@ -19,7 +19,7 @@ export default defineUserConfig({
       },
       {
         text: '后端笔记',
-        link: '/category/',
+        link: '/views/backend.md',
       },
       {
         text: '系统笔记',
