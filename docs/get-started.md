@@ -22,4 +22,4 @@ See [systemUrl][] for more details.
 
 [frontendUrl]: /views/frontend.md
 [backendUrl]: /views/backend.md
-[systemUrl]: /README.md
+[systemUrl]: /views/system.md

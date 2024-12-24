@@ -14,16 +14,16 @@ export default defineUserConfig({
     navbar: [
       '/',
       {
-        text: '前端笔记',
+        text: '前端',
         link: '/views/frontend.md',
       },
       {
-        text: '后端笔记',
+        text: '后端',
         link: '/views/backend.md',
       },
       {
-        text: '系统笔记',
-        link: '/tag/',
+        text: '系统',
+        link: '/views/system.md',
       },
     ],
   }),

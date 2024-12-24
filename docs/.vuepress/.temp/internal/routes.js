@@ -20,6 +20,8 @@ export const routes = Object.fromEntries([
   ["/posts/sticky.html", { loader: () => import(/* webpackChunkName: "posts_sticky.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/posts/sticky.html.js"), meta: {"_blog":{"title":"Sticky Article","author":"","date":"2021-01-01T00:00:00.000Z","category":["CategoryC"],"tag":["tag E"],"excerpt":"<p>A sticky article demo.</p>"},"title":"Sticky Article"} }],
   ["/posts/sticky2.html", { loader: () => import(/* webpackChunkName: "posts_sticky2.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/posts/sticky2.html.js"), meta: {"_blog":{"title":"Sticky Article with Higher Priority","author":"","date":"2020-01-01T00:00:00.000Z","category":["CategoryC"],"tag":["tag E"],"excerpt":"\n<p>Excerpt information which is added manually.</p>\n"},"title":"Sticky Article with Higher Priority"} }],
   ["/views/backend.html", { loader: () => import(/* webpackChunkName: "views_backend.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/views/backend.html.js"), meta: {"title":"Java, springboot"} }],
+  ["/views/frontend.html", { loader: () => import(/* webpackChunkName: "views_frontend.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/views/frontend.html.js"), meta: {"title":"JavaScript、NodeJs、TypeScript"} }],
+  ["/views/system.html", { loader: () => import(/* webpackChunkName: "views_system.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/views/system.html.js"), meta: {"title":"system、 terminal"} }],
   ["/404.html", { loader: () => import(/* webpackChunkName: "404.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/404.html.js"), meta: {"title":""} }],
   ["/category/", { loader: () => import(/* webpackChunkName: "category_index.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/category/index.html.js"), meta: {"title":"Categories"} }],
   ["/category/history/", { loader: () => import(/* webpackChunkName: "category_history_index.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/category/history/index.html.js"), meta: {"title":"Category History"} }],
@@ -36,7 +38,6 @@ export const routes = Object.fromEntries([
   ["/tag/tag-e/", { loader: () => import(/* webpackChunkName: "tag_tag-e_index.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/tag/tag-e/index.html.js"), meta: {"title":"Tag tag E"} }],
   ["/article/", { loader: () => import(/* webpackChunkName: "article_index.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/article/index.html.js"), meta: {"title":"Articles"} }],
   ["/timeline/", { loader: () => import(/* webpackChunkName: "timeline_index.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/timeline/index.html.js"), meta: {"title":"Timeline"} }],
-  ["/views/frontend.html", { loader: () => import(/* webpackChunkName: "views_frontend.html" */"D:/programme/vuepress-blogs/docs/.vuepress/.temp/pages/views/frontend.html.js"), meta: {"title":"JavaScript、NodeJs、TypeScript"} }],
 ]);
 
 if (import.meta.webpackHot) {
