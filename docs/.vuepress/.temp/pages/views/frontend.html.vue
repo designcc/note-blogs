@@ -308,6 +308,72 @@
 <span class="line"></span></code></pre>
 </div><h2 id="vuejs" tabindex="-1"><a class="header-anchor" href="#vuejs"><span>VueJs</span></a></h2>
 <p>声明式的、组件化的编程模型</p>
+<h3 id="组件的本质" tabindex="-1"><a class="header-anchor" href="#组件的本质"><span>组件的本质</span></a></h3>
+<p>组件配置 》vueComponent实例 》 render() 》virtual DOM 》 DOM</p>
+<p>createComponent -&gt; init -&gt; new 组件().$mount()</p>
+<p><em>组件的本质是产生虚拟DOM</em></p>
+<p><strong>组件处理</strong></p>
+<ol>
+<li>vue.extend 根据用户传入的对象生成一个组件的构造函数</li>
+<li>根据组件生成对应的虚拟节点 data： {hook：init}</li>
+<li>组件初始化 将我们的虚拟节点转化成真是节点(组件的init方法) new Sub().$mount()</li>
+</ol>
+<div class="language-javascript" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre><code><span class="line"><span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">createElement</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token function">createElement</span><span class="token punctuation">(</span></span>
+<span class="line">    <span class="token literal-property property">tag</span><span class="token operator">:</span> <span class="token comment">//标签名字</span></span>
+<span class="line">    data：<span class="token comment">// 传递数据</span></span>
+<span class="line">    <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token comment">//子节点数组</span></span>
+<span class="line">  <span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token comment">// Example</span></span>
+<span class="line"><span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">h</span><span class="token punctuation">)</span><span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token function">h</span><span class="token punctuation">(</span> <span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+</div><p><strong>new Vue</strong></p>
+<p>render &gt; template &gt; el</p>
+<p>// 初始化=》 根实例 =》 挂载 =》 执行render =》 Vdom =》 patch(vdom)  =》 dom =》 append</p>
+<div class="language-javascript" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre><code><span class="line"><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_init</span><span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">initLifecycle</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span></span>
+<span class="line">  <span class="token function">initEvents</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span></span>
+<span class="line">  <span class="token function">initRender</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span></span>
+<span class="line">  <span class="token function">callHook</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span><span class="token string">'beforeCreate'</span><span class="token punctuation">)</span></span>
+<span class="line">  <span class="token function">initInjections</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span></span>
+<span class="line">  <span class="token function">initState</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span></span>
+<span class="line">  <span class="token function">initProvide</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span></span>
+<span class="line">  <span class="token function">callHook</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span><span class="token string">'created'</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+</div><h3 id="插件开发" tabindex="-1"><a class="header-anchor" href="#插件开发"><span>插件开发</span></a></h3>
+<p>插件开发必须暴露install方法，第一个参数是vue构造器，第二个参数是可选的选项对象</p>
+<div class="language-javascript" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre><code><span class="line"><span class="token keyword">const</span> MyPlugin <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">install</span><span class="token punctuation">(</span><span class="token parameter">Vue<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span><span class="token punctuation">{</span></span>
+<span class="line">        <span class="token comment">// 注册全局方法</span></span>
+<span class="line">        Vue<span class="token punctuation">.</span>myGlobalMethod <span class="token operator">=</span>  <span class="token function">funtion</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="line">        <span class="token comment">// 注册全局资源</span></span>
+<span class="line">        Vue<span class="token punctuation">.</span><span class="token function">directiove</span><span class="token punctuation">(</span><span class="token string">'my-directive'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">        <span class="token comment">// 注册全局混入</span></span>
+<span class="line">        Vue<span class="token punctuation">.</span><span class="token function">mixin</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">        <span class="token comment">// 添加实例方法</span></span>
+<span class="line">        <span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$myMethod</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">myPlugin<span class="token punctuation">.</span>install <span class="token operator">=</span> <span class="token function">functions</span><span class="token punctuation">(</span><span class="token parameter">vue<span class="token punctuation">,</span>options</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+</div><h3 id="普通插槽-or-具名插槽" tabindex="-1"><a class="header-anchor" href="#普通插槽-or-具名插槽"><span>普通插槽 or 具名插槽</span></a></h3>
+<p>普通插槽：(渲染作用域在父组件中)</p>
+<ol>
+<li>解析组件的时候将组件的children放在componentOptions上作为虚拟节点的属性</li>
+<li>将childr取出放在组件的vm.$options._renderchildren中</li>
+<li>做出一个映射表放到vm.$slots上 》 将结果放在vm.$scopeSlots上 vm.$scopeslots = {a: fn, b:fn, default:fn}</li>
+<li>渲染组件调用_t方法 在vm.$scopeSlots找到对应的函数来渲染内容</li>
+</ol>
+<p>具名插槽：(渲染作用域在子组件中)</p>
+<ol>
+<li>渲染插槽的作用域是子组件，不会作为children，将作用域插槽变成一个属性scopeSlots</li>
+<li>制作一个映射关系 $scopeslots = {default: fn:function({msg}){return _c('div,{},[_v(_s(msg))})}}</li>
+<li>渲染组件的模板会通过那么找到对应的函数，将数据传入函数中才渲染虚拟节点，用虚拟节点替换_t('default')</li>
+</ol>
 <h3 id="vue2-x生命周期" tabindex="-1"><a class="header-anchor" href="#vue2-x生命周期"><span>Vue2.x生命周期</span></a></h3>
 <ul>
 <li>beforeCreate: 实例初始化之后，数据观测和事件配置之前</li>
@@ -323,19 +389,31 @@
 </ul>
 <h3 id="vue3-x生命周期" tabindex="-1"><a class="header-anchor" href="#vue3-x生命周期"><span>Vue3.x生命周期</span></a></h3>
 <ul>
-<li>beforeCreate: 实例初始化之后，数据观测和事件配置之前</li>
-<li>created: 实例已经创建完成，数据观测和事件配置完成，但是$el属性目前不可见</li>
-<li>beforeMount: 挂载开始之前被调用，相关的render函数首次被调用</li>
-<li>mounted: 实例已经挂载完成，数据渲染到页面</li>
-<li>beforeUpdate: 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前</li>
-<li>updated: 数据更改导致虚拟DOM重新渲染和打补丁之后调用</li>
-<li>beforeUnmount: 卸载之前调用</li>
-<li>unmounted: 卸载之后调用</li>
+<li>onBeforeMount: 组件被挂载之前被调用</li>
+<li>onMounted: 组件挂载完成后执行</li>
+<li>onUpdated: 组件因为响应式状态变更而更新其 DOM 树之后调用</li>
+<li>onUnmounted: 组件实例被卸载之后调用</li>
+<li>onBeforeUpdate: 组件即将因为响应式状态变更而更新其 DOM 树之前调用</li>
+<li>onBeforeUnmount: 组件实例被卸载之前调用</li>
 </ul>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>
 <p>setup函数会在beforeCreate之前执行，setup函数相当于beforeCreate和created的功能，可以在setup中直接进行数据初始化和方法定义</p>
 </div>
+<h3 id="vue开发规范整理" tabindex="-1"><a class="header-anchor" href="#vue开发规范整理"><span>Vue开发规范整理</span></a></h3>
+<ol>
+<li>函数/变量采用蛇形命名  function add_number(){}   let number_object = {}</li>
+<li>组件/组件变量名/类型采用大驼峰命名 AddNumberTemplate</li>
+<li>全局Api/全局状态store 采用命名前缀api_</li>
+<li>多数组件状态应该使用reactive定义在一起，命名state</li>
+<li>结构优先，保证标签结构清晰的前提下表达更多信息，程序表达逻辑，结构表达信息。</li>
+<li>避免大量调用栈，比如按钮单一功能Js功能代码写在行内模板，无需定义函数</li>
+<li>避免嵌套除非无法避免</li>
+<li>避免使用标签选择器，class类名采用小写单词，中间用短横线连接</li>
+<li>选择器尽量保持一层，原则上不允许超过三层</li>
+<li>css状态类名：active,disabled,selected,open,close,on,off</li>
+<li>尽量使用统一的export导出</li>
+</ol>
 </div></template>
 
 

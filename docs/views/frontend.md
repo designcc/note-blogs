@@ -305,6 +305,81 @@ type AddResult = Add<32,23>
 
 ## VueJs
 声明式的、组件化的编程模型
+
+### 组件的本质
+组件配置 》vueComponent实例 》 render() 》virtual DOM 》 DOM
+
+createComponent -> init -> new 组件().$mount()
+
+*组件的本质是产生虚拟DOM*
+
+**组件处理**
+1. vue.extend 根据用户传入的对象生成一个组件的构造函数
+2. 根据组件生成对应的虚拟节点 data： {hook：init}
+3. 组件初始化 将我们的虚拟节点转化成真是节点(组件的init方法) new Sub().$mount()
+```javascript:no-line-numbers
+function render(createElement) {
+  return createElement(
+    tag: //标签名字
+    data：// 传递数据
+    children: //子节点数组
+  )
+}
+// Example
+render(h){
+  return h( )
+}
+```
+
+**new Vue**
+
+render > template > el
+
+// 初始化=》 根实例 =》 挂载 =》 执行render =》 Vdom =》 patch(vdom)  =》 dom =》 append
+```javascript:no-line-numbers
+this._init(options)  {
+  initLifecycle(vm)
+  initEvents(vm)
+  initRender(vm)
+  callHook(vm,'beforeCreate')
+  initInjections(vm)
+  initState(vm)
+  initProvide(vm)
+  callHook(vm,'created')
+}
+```
+
+### 插件开发
+插件开发必须暴露install方法，第一个参数是vue构造器，第二个参数是可选的选项对象
+```javascript:no-line-numbers
+const MyPlugin = {
+    install(Vue, options){
+        // 注册全局方法
+        Vue.myGlobalMethod =  funtion () {}
+        // 注册全局资源
+        Vue.directiove('my-directive', {})
+        // 注册全局混入
+        Vue.mixin({})
+        // 添加实例方法
+        Vue.prototype.$myMethod = function(){}
+    }
+}
+myPlugin.install = functions(vue,options){}
+```
+
+### 普通插槽 or 具名插槽
+普通插槽：(渲染作用域在父组件中)
+
+1. 解析组件的时候将组件的children放在componentOptions上作为虚拟节点的属性
+2. 将childr取出放在组件的vm.$options._renderchildren中
+3. 做出一个映射表放到vm.$slots上 》 将结果放在vm.$scopeSlots上 vm.$scopeslots = {a: fn, b:fn, default:fn}
+4. 渲染组件调用_t方法 在vm.$scopeSlots找到对应的函数来渲染内容
+
+具名插槽：(渲染作用域在子组件中)
+1. 渲染插槽的作用域是子组件，不会作为children，将作用域插槽变成一个属性scopeSlots
+2. 制作一个映射关系 $scopeslots = {default: fn:function({msg}){return _c('div,{},[_v(_s(msg))})}}
+3. 渲染组件的模板会通过那么找到对应的函数，将数据传入函数中才渲染虚拟节点，用虚拟节点替换_t('default')
+
 ### Vue2.x生命周期
 - beforeCreate: 实例初始化之后，数据观测和事件配置之前
 - created: 实例已经创建完成，数据观测和事件配置完成，但是$el属性目前不可见
@@ -318,15 +393,26 @@ type AddResult = Add<32,23>
 - destroyed: 实例销毁之后调用，所有绑定都会被解绑
 
 ### Vue3.x生命周期
-- beforeCreate: 实例初始化之后，数据观测和事件配置之前
-- created: 实例已经创建完成，数据观测和事件配置完成，但是$el属性目前不可见
-- beforeMount: 挂载开始之前被调用，相关的render函数首次被调用
-- mounted: 实例已经挂载完成，数据渲染到页面
-- beforeUpdate: 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前
-- updated: 数据更改导致虚拟DOM重新渲染和打补丁之后调用
-- beforeUnmount: 卸载之前调用
-- unmounted: 卸载之后调用
+- onBeforeMount: 组件被挂载之前被调用
+- onMounted: 组件挂载完成后执行
+- onUpdated: 组件因为响应式状态变更而更新其 DOM 树之后调用
+- onUnmounted: 组件实例被卸载之后调用
+- onBeforeUpdate: 组件即将因为响应式状态变更而更新其 DOM 树之前调用
+- onBeforeUnmount: 组件实例被卸载之前调用
 
 ::: tip
 setup函数会在beforeCreate之前执行，setup函数相当于beforeCreate和created的功能，可以在setup中直接进行数据初始化和方法定义
 :::
+
+### Vue开发规范整理
+1. 函数/变量采用蛇形命名  function add_number(){}   let number_object = {}
+2. 组件/组件变量名/类型采用大驼峰命名 AddNumberTemplate
+3. 全局Api/全局状态store 采用命名前缀api_
+4. 多数组件状态应该使用reactive定义在一起，命名state
+5. 结构优先，保证标签结构清晰的前提下表达更多信息，程序表达逻辑，结构表达信息。
+6. 避免大量调用栈，比如按钮单一功能Js功能代码写在行内模板，无需定义函数
+7. 避免嵌套除非无法避免
+8. 避免使用标签选择器，class类名采用小写单词，中间用短横线连接
+9. 选择器尽量保持一层，原则上不允许超过三层
+10. css状态类名：active,disabled,selected,open,close,on,off
+11. 尽量使用统一的export导出
