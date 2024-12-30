@@ -416,3 +416,71 @@ setup函数会在beforeCreate之前执行，setup函数相当于beforeCreate和c
 9. 选择器尽量保持一层，原则上不允许超过三层
 10. css状态类名：active,disabled,selected,open,close,on,off
 11. 尽量使用统一的export导出
+
+## Rxjs(Reactive Extensions JS)
+### ReactiveX 五个基本概念
+- 非同步程式  Asynchronous programming
+- 串流 Stream
+- 观察者模式 Observer pattern
+- 迭代器模式 Iterator pattern
+- 函式语言程式设计 Functional programming
+::: info
+let contter&: Subject\<number>  命名上加一个$表示他是可被观察的对象observable
+:::
+
+### 时间管理
+#### 时间线：Observable
+- create
+- of  .of( ' ' , ' ' )
+- from  .from([ '', '' ])
+- fromEvent   .fromEvent( dom, 'click'  )
+- fromPromise
+- never  无穷的observable, 订阅什么都不会发送
+- empty  空的observable, 订阅会推送complate
+- throw  错误的observable
+- interval  .interval(1000)
+- timer  .timer(1000, 5000) 第一次订阅的时间和之后的订阅的时间
+
+#### subscribe方法参数：Observer
+- 订阅就是一个function
+- 接收的方法具有next，error，complete三个属性方法
+- 返回一个可退订 unsubscribe 的属性
+
+#### 时间管理各种方法：Operators
+- map()
+- mapTo()
+- filter()
+- transformtion
+- combination
+- take
+- flrst
+- takeUntil
+- concatall
+- zip
+- buffer
+- delay
+- debounce
+
+#### 被观察的时间线：Subscription
+- next(value) {}
+- complete() {}
+- error(error) {}
+- unsubscribt()
+
+```js:no-line-numbers
+var observable = Rx.Observable.create(function(observer) {
+    observer.next('Jerry')
+})
+// subscribe 是一个function 这个function会被传入观察者，观察者内部去执行方法
+observable.subscribe(function(value) {
+    console.log(value)
+})
+
+------------- ---  // ---表示一个observable
+------------- --X  // --x表示有错误
+------------- --|  // --|表示结束
+```
+
+Stream 是指时间序列上的一连串数据事件，而常见的数据事件（Data Event）包括 Variables、User Inputs、Properties、Caches、Data Structures 等各种同步或异步的操作，通过 Observe（观察）这些 Data Event，并依据其 Side Effects 进行对应的操作。
+
+![rxjs](./static/rxjs.png)

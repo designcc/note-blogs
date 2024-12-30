@@ -414,6 +414,76 @@
 <li>css状态类名：active,disabled,selected,open,close,on,off</li>
 <li>尽量使用统一的export导出</li>
 </ol>
+<h2 id="rxjs-reactive-extensions-js" tabindex="-1"><a class="header-anchor" href="#rxjs-reactive-extensions-js"><span>Rxjs(Reactive Extensions JS)</span></a></h2>
+<h3 id="reactivex-五个基本概念" tabindex="-1"><a class="header-anchor" href="#reactivex-五个基本概念"><span>ReactiveX 五个基本概念</span></a></h3>
+<ul>
+<li>非同步程式  Asynchronous programming</li>
+<li>串流 Stream</li>
+<li>观察者模式 Observer pattern</li>
+<li>迭代器模式 Iterator pattern</li>
+<li>函式语言程式设计 Functional programming</li>
+</ul>
+<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>let contter&amp;: Subject&lt;number&gt;  命名上加一个$表示他是可被观察的对象observable</p>
+</div>
+<h3 id="时间管理" tabindex="-1"><a class="header-anchor" href="#时间管理"><span>时间管理</span></a></h3>
+<h4 id="时间线-observable" tabindex="-1"><a class="header-anchor" href="#时间线-observable"><span>时间线：Observable</span></a></h4>
+<ul>
+<li>create</li>
+<li>of  .of( ' ' , ' ' )</li>
+<li>from  .from([ '', '' ])</li>
+<li>fromEvent   .fromEvent( dom, 'click'  )</li>
+<li>fromPromise</li>
+<li>never  无穷的observable, 订阅什么都不会发送</li>
+<li>empty  空的observable, 订阅会推送complate</li>
+<li>throw  错误的observable</li>
+<li>interval  .interval(1000)</li>
+<li>timer  .timer(1000, 5000) 第一次订阅的时间和之后的订阅的时间</li>
+</ul>
+<h4 id="subscribe方法参数-observer" tabindex="-1"><a class="header-anchor" href="#subscribe方法参数-observer"><span>subscribe方法参数：Observer</span></a></h4>
+<ul>
+<li>订阅就是一个function</li>
+<li>接收的方法具有next，error，complete三个属性方法</li>
+<li>返回一个可退订 unsubscribe 的属性</li>
+</ul>
+<h4 id="时间管理各种方法-operators" tabindex="-1"><a class="header-anchor" href="#时间管理各种方法-operators"><span>时间管理各种方法：Operators</span></a></h4>
+<ul>
+<li>map()</li>
+<li>mapTo()</li>
+<li>filter()</li>
+<li>transformtion</li>
+<li>combination</li>
+<li>take</li>
+<li>flrst</li>
+<li>takeUntil</li>
+<li>concatall</li>
+<li>zip</li>
+<li>buffer</li>
+<li>delay</li>
+<li>debounce</li>
+</ul>
+<h4 id="被观察的时间线-subscription" tabindex="-1"><a class="header-anchor" href="#被观察的时间线-subscription"><span>被观察的时间线：Subscription</span></a></h4>
+<ul>
+<li>next(value) {}</li>
+<li>complete() {}</li>
+<li>error(error) {}</li>
+<li>unsubscribt()</li>
+</ul>
+<div class="language-javascript" data-highlighter="prismjs" data-ext="js" data-title="js"><pre v-pre><code><span class="line"><span class="token keyword">var</span> observable <span class="token operator">=</span> Rx<span class="token punctuation">.</span>Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">observer</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    observer<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Jerry'</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token comment">// subscribe 是一个function 这个function会被传入观察者，观察者内部去执行方法</span></span>
+<span class="line">observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span> <span class="token operator">--</span><span class="token operator">-</span>  <span class="token comment">// ---表示一个observable</span></span>
+<span class="line"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span> <span class="token operator">--</span><span class="token constant">X</span>  <span class="token comment">// --x表示有错误</span></span>
+<span class="line"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span> <span class="token operator">--</span><span class="token operator">|</span>  <span class="token comment">// --|表示结束</span></span>
+<span class="line"></span></code></pre>
+</div><p>Stream 是指时间序列上的一连串数据事件，而常见的数据事件（Data Event）包括 Variables、User Inputs、Properties、Caches、Data Structures 等各种同步或异步的操作，通过 Observe（观察）这些 Data Event，并依据其 Side Effects 进行对应的操作。</p>
+<p><img src="@source/views/static/rxjs.png" alt="rxjs"></p>
 </div></template>
 
 
