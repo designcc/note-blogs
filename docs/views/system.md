@@ -142,7 +142,7 @@ U：文件没有被合并（需要完成合并才能提交）unTracked 未跟踪
 
 X：未知状态
 
-::: info
+::: important
 #HEAD 表示当前版本 HEAD^代表上一个版本
 :::
 
@@ -179,10 +179,11 @@ git rm -r * 递归删除某个目录下的所有子目录和文件
 
 ## Vim
 **模式： normal模式 > i 键切换到insert模式**
-s
+
 -动词：operator(操作符) -名词：Motion(动作) - Text object(文本对象)
 
-**移动**
+### 移动
+
 K：往上移动 J：往下移动 H：往左移动 L：往右移动
 
 zc: 关闭代码折叠 --- zo打开代码折叠
@@ -219,7 +220,7 @@ J：合并行
 
 .：重复上一次命令
 
-**操作**
+### 操作
 
 d(delete) 删除
 
@@ -233,13 +234,13 @@ y(yank) 复制
 
 yy：复制一行
 
-v(visual) 选中并进入visual模式
+v(visual) 选中并进入 visual 模式
 
 p：复制一行
 
 u：撤销操作
 
-**动作**
+### 动作
 
 i(inner)：i" -> "foo" iw -> foo i( -> (foo)
 
@@ -248,15 +249,16 @@ a(around)：i" -> "foo" iw -> foo i( -> (foo)
 
 **insert模式：用于文本输入**
 
-esc / ctrl+[：退出insert模式
-
 **Visual模式：用于文本选择**
+::: note
+esc / ctrl+[：退出 insert 模式
+:::
 
 v: 进去选择模式
 
 u：大小写转换 --- U
 
-vi"：选中"xxx "内的内容
+vi"：选中 "xxx" 内的内容
 
 vip：选中一段内容
 
@@ -266,15 +268,17 @@ vip：选中一段内容
 
 / 进去查询模式
 
-/进去搜索模式 输入查找字符回车
+/进去搜索模式，输入查找字符回车
 
 n匹配下一个结果 --- N上一个结果
 
-进去正则替换模式
+: 进去正则替换模式
 
-:：进入输入模式 :s/search/replace 当前行替换第一个 :s/search/replace/g g匹配当前行符合的所有 i区分大小写
+:：进入输入模式 \:s/search/replace 当前行替换第一个 \:s/search/replace/g g匹配当前行符合的所有 i区分大小写
 
-:10,20s/search/replace 10-20表示10行到20行 :%s/search/replace %s表示当前文件全部匹配 :s/\<search\>/replace
+:10,20s/search/replace 10-20表示10行到20行 :%s/search/replace %s表示当前文件全部匹配 \:s/\<search\>/replace
+
+### 快捷操作
 
 gd: 转到定义
 

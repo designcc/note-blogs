@@ -187,7 +187,7 @@
 <span class="line">constructor <span class="token comment">//返回一个引用指向该实例对象的构造函数</span></span>
 <span class="line"></span></code></pre>
 </div><h2 id="nodejs" tabindex="-1"><a class="header-anchor" href="#nodejs"><span>NodeJs</span></a></h2>
-<h3 id="语言特性" tabindex="-1"><a class="header-anchor" href="#语言特性"><span>语言特性</span></a></h3>
+<p><strong>语言特性</strong></p>
 <p>同步和异步指的是被调用方，阻塞和非阻塞指的是调用方，java就是同步阻塞，需要等被调用方代码执行完成，JavaScript是异步非阻塞，代码可以正常执行等异步代码执行完毕回调通知</p>
 <ol>
 <li>异步编程的优势在于能够提高程序的执行效率，避免阻塞线程等待长时间的操作，使得程序能够更高效地利用系统资源。</li>

@@ -135,8 +135,8 @@
 <p>T：文件的类型被修改</p>
 <p>U：文件没有被合并（需要完成合并才能提交）unTracked 未跟踪 蓝色</p>
 <p>X：未知状态</p>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
+<div class="hint-container important">
+<p class="hint-container-title">重要</p>
 <p>#HEAD 表示当前版本 HEAD^代表上一个版本</p>
 </div>
 <h3 id="常用命令" tabindex="-1"><a class="header-anchor" href="#常用命令"><span>常用命令</span></a></h3>
@@ -156,11 +156,10 @@
 <p>git rm --cached &lt;file&gt; 把文件从暂存区删除，但保留在当前工作区</p>
 <p>git rm -r * 递归删除某个目录下的所有子目录和文件</p>
 <h2 id="vim" tabindex="-1"><a class="header-anchor" href="#vim"><span>Vim</span></a></h2>
-<p><strong>模式： normal模式 &gt; i 键切换到insert模式</strong>
-s
--动词：operator(操作符) -名词：Motion(动作) - Text object(文本对象)</p>
-<p><strong>移动</strong>
-K：往上移动 J：往下移动 H：往左移动 L：往右移动</p>
+<p><strong>模式： normal模式 &gt; i 键切换到insert模式</strong></p>
+<p>-动词：operator(操作符) -名词：Motion(动作) - Text object(文本对象)</p>
+<h3 id="移动" tabindex="-1"><a class="header-anchor" href="#移动"><span>移动</span></a></h3>
+<p>K：往上移动 J：往下移动 H：往左移动 L：往右移动</p>
 <p>zc: 关闭代码折叠 --- zo打开代码折叠</p>
 <p>%：匹配一对呈现的如() {} []</p>
 <p>*：查找光标所单词的下一个 --- #查找光标所单词的上一个</p>
@@ -178,34 +177,38 @@ K：往上移动 J：往下移动 H：往左移动 L：往右移动</p>
 <p>J：合并行</p>
 <p>~：切换大小写</p>
 <p>.：重复上一次命令</p>
-<p><strong>操作</strong></p>
+<h3 id="操作" tabindex="-1"><a class="header-anchor" href="#操作"><span>操作</span></a></h3>
 <p>d(delete) 删除</p>
 <p>dd：删除一行</p>
 <p>c(change) 修改</p>
 <p>cc：删除并进入写入模式</p>
 <p>y(yank) 复制</p>
 <p>yy：复制一行</p>
-<p>v(visual) 选中并进入visual模式</p>
+<p>v(visual) 选中并进入 visual 模式</p>
 <p>p：复制一行</p>
 <p>u：撤销操作</p>
-<p><strong>动作</strong></p>
+<h3 id="动作" tabindex="-1"><a class="header-anchor" href="#动作"><span>动作</span></a></h3>
 <p>i(inner)：i&quot; -&gt; &quot;foo&quot; iw -&gt; foo i( -&gt; (foo)</p>
 <p>a(around)：i&quot; -&gt; &quot;foo&quot; iw -&gt; foo i( -&gt; (foo)</p>
 <p><strong>insert模式：用于文本输入</strong></p>
-<p>esc / ctrl+[：退出insert模式</p>
 <p><strong>Visual模式：用于文本选择</strong></p>
+<div class="hint-container note">
+<p class="hint-container-title">注</p>
+<p>esc / ctrl+[：退出 insert 模式</p>
+</div>
 <p>v: 进去选择模式</p>
 <p>u：大小写转换 --- U</p>
-<p>vi&quot;：选中&quot;xxx &quot;内的内容</p>
+<p>vi&quot;：选中 &quot;xxx&quot; 内的内容</p>
 <p>vip：选中一段内容</p>
 <p><strong>Command模式：用于执行命令</strong></p>
 <p>/{pattern}：向前搜索 ---- ?{pattern}：向后搜索</p>
 <p>/ 进去查询模式</p>
-<p>/进去搜索模式 输入查找字符回车</p>
+<p>/进去搜索模式，输入查找字符回车</p>
 <p>n匹配下一个结果 --- N上一个结果</p>
-<p>进去正则替换模式</p>
-<p>:：进入输入模式 😒/search/replace 当前行替换第一个 😒/search/replace/g g匹配当前行符合的所有 i区分大小写</p>
-<p>:10,20s/search/replace 10-20表示10行到20行 :%s/search/replace %s表示当前文件全部匹配 😒/&lt;search&gt;/replace</p>
+<p>: 进去正则替换模式</p>
+<p>:：进入输入模式 :s/search/replace 当前行替换第一个 :s/search/replace/g g匹配当前行符合的所有 i区分大小写</p>
+<p>:10,20s/search/replace 10-20表示10行到20行 :%s/search/replace %s表示当前文件全部匹配 :s/&lt;search&gt;/replace</p>
+<h3 id="快捷操作" tabindex="-1"><a class="header-anchor" href="#快捷操作"><span>快捷操作</span></a></h3>
 <p>gd: 转到定义</p>
 <p>gh：鼠标hover效果</p>
 <p>ctrl+]：查看定义</p>
