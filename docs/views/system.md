@@ -181,7 +181,7 @@ git rm -r * 递归删除某个目录下的所有子目录和文件
 **模式： normal模式 > i 键切换到insert模式**
 
 -动词：operator(操作符) -名词：Motion(动作) - Text object(文本对象)
-
+![networkingProtocol1](./static/vim-oper.png)
 ### 移动
 
 K：往上移动 J：往下移动 H：往左移动 L：往右移动

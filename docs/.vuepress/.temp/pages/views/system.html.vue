@@ -157,7 +157,8 @@
 <p>git rm -r * 递归删除某个目录下的所有子目录和文件</p>
 <h2 id="vim" tabindex="-1"><a class="header-anchor" href="#vim"><span>Vim</span></a></h2>
 <p><strong>模式： normal模式 &gt; i 键切换到insert模式</strong></p>
-<p>-动词：operator(操作符) -名词：Motion(动作) - Text object(文本对象)</p>
+<p>-动词：operator(操作符) -名词：Motion(动作) - Text object(文本对象)
+<img src="@source/views/static/vim-oper.png" alt="networkingProtocol1"></p>
 <h3 id="移动" tabindex="-1"><a class="header-anchor" href="#移动"><span>移动</span></a></h3>
 <p>K：往上移动 J：往下移动 H：往左移动 L：往右移动</p>
 <p>zc: 关闭代码折叠 --- zo打开代码折叠</p>
